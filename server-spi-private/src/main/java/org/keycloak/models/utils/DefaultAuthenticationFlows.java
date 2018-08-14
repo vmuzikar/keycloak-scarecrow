@@ -52,6 +52,9 @@ public class DefaultAuthenticationFlows {
     public static final String IDP_REVIEW_PROFILE_CONFIG_ALIAS = "review profile config";
     public static final String IDP_CREATE_UNIQUE_USER_CONFIG_ALIAS = "create unique user config";
 
+    public static final String OPENSHIFT_CHALLENGE_FLOW = "openshift challenge flow";
+    public static final String OPENSHIFT_CHALLENGE_FLOW_DESCRIPTION = "openshift flow for clients requiring challenge mode";
+
     public static void addFlows(RealmModel realm) {
         if (realm.getFlowByAlias(BROWSER_FLOW) == null) browserFlow(realm);
         if (realm.getFlowByAlias(DIRECT_GRANT_FLOW) == null) directGrantFlow(realm, false);

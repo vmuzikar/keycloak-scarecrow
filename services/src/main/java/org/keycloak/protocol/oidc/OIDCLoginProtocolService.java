@@ -68,9 +68,9 @@ import java.util.List;
  */
 public class OIDCLoginProtocolService {
 
-    private RealmModel realm;
-    private TokenManager tokenManager;
-    private EventBuilder event;
+    protected RealmModel realm;
+    protected TokenManager tokenManager;
+    protected EventBuilder event;
 
     @Context
     private KeycloakSession session;
