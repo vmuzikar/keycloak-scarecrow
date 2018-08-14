@@ -92,11 +92,7 @@ import org.keycloak.utils.ProfileHelper;
 import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
 import javax.ws.rs.core.Response.Status;
 
 import java.util.List;
@@ -113,9 +109,9 @@ import java.security.MessageDigest;
 public class TokenEndpoint {
 
     private static final Logger logger = Logger.getLogger(TokenEndpoint.class);
-    private MultivaluedMap<String, String> formParams;
-    private ClientModel client;
-    private Map<String, String> clientAuthAttributes;
+    protected MultivaluedMap<String, String> formParams;
+    protected ClientModel client;
+    protected Map<String, String> clientAuthAttributes;
 
     private enum Action {
         AUTHORIZATION_CODE, REFRESH_TOKEN, PASSWORD, CLIENT_CREDENTIALS, TOKEN_EXCHANGE, PERMISSION
@@ -125,29 +121,32 @@ public class TokenEndpoint {
     private static final Pattern VALID_CODE_VERIFIER_PATTERN = Pattern.compile("^[0-9a-zA-Z\\-\\.~_]+$");
 
     @Context
-    private KeycloakSession session;
+    protected KeycloakSession session;
 
     @Context
-    private HttpRequest request;
+    protected HttpRequest request;
 
     @Context
-    private HttpResponse httpResponse;
+    protected HttpResponse httpResponse;
 
     @Context
-    private HttpHeaders headers;
+    protected HttpHeaders headers;
 
     @Context
-    private ClientConnection clientConnection;
+    protected ClientConnection clientConnection;
 
-    private final TokenManager tokenManager;
-    private final RealmModel realm;
-    private final EventBuilder event;
+    @Context
+    protected UriInfo uriInfo;
 
-    private Action action;
+    protected final TokenManager tokenManager;
+    protected final RealmModel realm;
+    protected final EventBuilder event;
 
-    private String grantType;
+    protected Action action;
 
-    private Cors cors;
+    protected String grantType;
+
+    protected Cors cors;
 
     public TokenEndpoint(TokenManager tokenManager, RealmModel realm, EventBuilder event) {
         this.tokenManager = tokenManager;
