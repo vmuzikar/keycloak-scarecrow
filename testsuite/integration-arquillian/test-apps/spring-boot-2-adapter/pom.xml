@@ -5,7 +5,7 @@
 
 	<groupId>org.keycloak</groupId>
 	<artifactId>spring-boot-2-adapter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>4.8.0.Final</version>
 	<packaging>jar</packaging>
 
 	<name>spring-boot-adapter</name>
