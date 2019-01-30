@@ -107,7 +107,7 @@ public abstract class AbstractKeycloakTest {
     protected SuiteContext suiteContext;
 
     @ArquillianResource
-    protected TestContext testContext;
+    protected TestContext testContext
 
     protected Keycloak adminClient;
 
